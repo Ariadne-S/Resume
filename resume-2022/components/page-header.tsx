@@ -49,6 +49,12 @@ const PageHeaderContainer = styled.div`
     align-items: center;
     border-bottom: 3px solid #91a0b7;
     padding: 2rem;
+    background-color: #31435d;
+    margin-top: 0;
+    
+    * {
+        color: #ffffffed;
+    }
     
     h1 {
         margin-bottom: 0px;
