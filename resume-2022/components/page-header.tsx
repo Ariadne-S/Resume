@@ -17,7 +17,7 @@ const githubIconDefinition: IconDefinition = findIconDefinition(githubLookup)
 const linkedInLookup: IconLookup = { prefix: 'fab', iconName: 'linkedin' }
 const linkedInIconDefinition: IconDefinition = findIconDefinition(linkedInLookup)
 
-const pageHeader: FC = () => {
+const PageHeader: FC = () => {
     return (
         <PageHeaderContainer>
             <h1>Toni Sefton</h1>
@@ -47,8 +47,12 @@ const PageHeaderContainer = styled.div`
     width: 100vw;
     flex-direction: column;
     align-items: center;
-    border-bottom: 3px solid #56688d;
+    border-bottom: 3px solid #91a0b7;
     padding: 2rem;
+    
+    h1 {
+        margin-bottom: 0px;
+    }
 `;
 
 const PersonalInfo = styled.div`
@@ -56,12 +60,13 @@ const PersonalInfo = styled.div`
     width: 100vw;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 20px;
 `;
 
 const Info = styled.a`
     svg {
         margin-right: 10px;
-    }
+    };
 `;
 
-export default pageHeader
+export default PageHeader

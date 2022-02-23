@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import PageHeader from "../components/page-header";
+import Experience from "../components/experience";
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +15,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-         <PageHeader />
+          <PageHeader />
+          <Experience />
       </main>
 
       <footer className={styles.footer}>
