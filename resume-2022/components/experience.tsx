@@ -1,17 +1,18 @@
 import {FC} from "react";
 import styled from "styled-components";
-import {findIconDefinition, IconDefinition, IconLookup} from "@fortawesome/fontawesome-svg-core";
+import {findIconDefinition, IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 interface Project {
-    icon: IconDefinition
+    icon?: IconDefinition,
+    svg?: JSX.Element,
     title: string,
     description: JSX.Element,
     color: string,
     tags: string[]
 }
 
-const colors  = {
+const colors = {
     red: "hsl(0, 78%, 62%)",
     cyan: "hsl(180, 62%, 55%)",
     orange: "hsl(34, 97%, 64%)",
@@ -29,7 +30,7 @@ const projectData: Project[] = [
                             agility pack and depending on the complexity of the website configuring a headless crawl to
                             retrieve
                             generated html with Puppeteer.</span>,
-        tags: []
+        tags: ["Dotnet core", "AWS", "Puppeteer", "Seq", "html Agility Pack"]
     },
     {
         icon: findIconDefinition({prefix: 'fas', iconName: 'table-list'}),
@@ -39,7 +40,7 @@ const projectData: Project[] = [
             Collaborated to plan and implement the "Smart Scraper" project - a database driven scraper
             infrastructure that reduced job automation set up from days to a couple of hours.
         </span>,
-        tags: []
+        tags: ["Dotnet core", "Octostache", "Entity Framework"]
     },
     {
         icon: findIconDefinition({prefix: 'fas', iconName: 'vials'}),
@@ -47,60 +48,63 @@ const projectData: Project[] = [
         title: "Smart Scraper Test Builder",
         description: <span>
             Encaptualisated logic to remove duplication and simplify the configuration of Smart
-                                Scraper
-                                tests
+            Scraper tests
         </span>,
-        tags: []
+        tags: ["Dotnet core"]
     },
     {
         icon: findIconDefinition({prefix: 'fas', iconName: 'baby-carriage'}),
         color: colors.blue,
         title: "Structured Employer Benefits Data",
-        description: <span>
-            Designed and migrated a structred data schema for the Employer Benefits area to enable
-                            functionality such as comparing benifits and search. Worked alongside the customer success
-                            team to clean and migrate old data to the new structure. I
-
-                            Worked alongside UX to build their vision for the Employer Benefits tables
-        </span>,
-        tags: []
+        description: 
+            <span>
+                Designed and migrated a structred data schema for the Employer Benefits area to enable
+                functionality such as comparing benifits and search. Worked alongside the customer success
+                team to clean and migrate old data to the new structure. I
+    
+                Worked alongside UX to build their vision for the Employer Benefits tables
+            </span>,
+        tags: ["Dotnet core", "Entity Framework", "Hangfire", "Elastic Search"]
     },
     {
         icon: findIconDefinition({prefix: 'fas', iconName: 'heart'}),
         color: colors.red,
         title: "Save job functionality",
-        description: <span>
-            Built the save job functionality, which entails an register/sign in gate, the ability to
-                            save
-                            a job
-                            and to remove a saved job from multiple places across the website. With google analytics
-                            events firing for each action.
-        </span>,
-        tags: []
+        description: 
+            <span>
+                Built the save job functionality, which entails an register/sign in gate, the ability to
+                save a job and to remove a saved job from multiple places across the website. With google analytics
+                events firing for each action.
+            </span>,
+        tags: ["Dotnet core", "Entity Framework", "Hangfire", "React", "Styled Components"]
     },
     {
-        icon: findIconDefinition({prefix: 'fas', iconName: 'heart'}),
+        svg: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24"
+                  preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">
+            <path
+                d="M119.617.069c-.55.05-2.302.225-3.879.35c-36.36 3.278-70.419 22.894-91.99 53.044c-12.012 16.764-19.694 35.78-22.597 55.922C.125 116.415 0 118.492 0 128.025c0 9.533.125 11.61 1.151 18.64c6.957 48.065 41.165 88.449 87.56 103.411c8.309 2.678 17.067 4.504 27.027 5.605c3.879.425 20.645.425 24.524 0c17.192-1.902 31.756-6.155 46.12-13.486c2.202-1.126 2.628-1.426 2.327-1.677c-.2-.15-9.584-12.735-20.845-27.948l-20.47-27.648l-25.65-37.956c-14.114-20.868-25.725-37.932-25.825-37.932c-.1-.025-.2 16.84-.25 37.431c-.076 36.055-.1 37.506-.551 38.357c-.65 1.226-1.151 1.727-2.202 2.277c-.801.4-1.502.475-5.28.475h-4.33l-1.15-.725a4.679 4.679 0 0 1-1.677-1.827l-.526-1.126l.05-50.166l.075-50.192l.776-.976c.4-.525 1.251-1.2 1.852-1.526c1.026-.5 1.426-.55 5.755-.55c5.105 0 5.956.2 7.282 1.651c.376.4 14.264 21.318 30.88 46.514c16.617 25.195 39.34 59.599 50.5 76.488l20.27 30.7l1.026-.675c9.084-5.905 18.693-14.312 26.3-23.07c16.191-18.59 26.626-41.258 30.13-65.428c1.026-7.031 1.151-9.108 1.151-18.64c0-9.534-.125-11.61-1.151-18.641c-6.957-48.065-41.165-88.449-87.56-103.411c-8.184-2.652-16.892-4.479-26.652-5.58c-2.402-.25-18.943-.525-21.02-.325Zm52.401 77.414c1.201.6 2.177 1.752 2.527 2.953c.2.65.25 14.562.2 45.913l-.074 44.987l-7.933-12.16l-7.958-12.16v-32.702c0-21.143.1-33.028.25-33.603c.4-1.401 1.277-2.502 2.478-3.153c1.026-.525 1.401-.575 5.33-.575c3.704 0 4.354.05 5.18.5Z"/>
+        </svg>,
         color: colors.cyan,
         title: "Port the frontend to NextJs typescript",
         description: <span>
             Spearheaded a greenfield project to port the jobsite frontend from a Razor/javascript React
-                            project to Typescript React NextJs, drastically improving page speed and improving developer
-                            experience
+            project to Typescript React NextJs, drastically improving page speed and improving developer
+            experience
         </span>,
-        tags: []
+        tags: ["React", "NextJs", "Javascript", "Typescript", "Styled Components"]
     }
     ,
     {
-        icon: findIconDefinition({prefix: 'fas', iconName: 'heart'}),
+        icon: findIconDefinition({prefix: 'fas', iconName: 'at'}),
         color: colors.orange,
         title: "Domain Migration",
         description: <span>
             Investigated and implemented NextJs internationalised routing and worked with the team to
-                            migrate the website from regionalised sub domains to sub paths to create a website with a
-                            more
-                            globalised feel.
+            migrate the website from regionalised sub domains to sub paths to create a website with a
+            more globalised feel.
         </span>,
-        tags: []
+        tags: ["NextJs", "Typescript"]
+
     }
     ,
     {
@@ -110,7 +114,7 @@ const projectData: Project[] = [
         description: <span>
             Migrate content and assets from Squidex to Wordpress
         </span>,
-        tags: []
+        tags: ["Dotnet core", "MartenDb", "Hangfire", "Seq"]
     }
 ]
 
@@ -153,7 +157,7 @@ const ProjectsCallout: FC = () => {
         <div>
             <h5>Projects</h5>
             <ProjectGrid>
-                {projectData.map(project => <ProjectDisplay project={project}/>)}
+                {projectData.map(project => <ProjectDisplay key={project.title} project={project}/>)}
             </ProjectGrid>
         </div>
 
@@ -179,18 +183,56 @@ const Timeline: FC = () => {
 
 
 const ProjectDisplay: FC<{ project: Project }> = ({project}) => {
+    const tagIcon = findIconDefinition({prefix: 'fas', iconName: 'tag'});
     return (
         <ProjectCard color={project.color}>
+            <CardPullDown>
+                <ul>
+                    {project.tags.map((tag, index) =>
+                        <li key={`${tag}-${index}`}>
+                            <FontAwesomeIcon icon={tagIcon} color={"hsl(234,12%,34%)"}/>
+                            {tag}
+                        </li>
+                    )}
+                </ul>
+            </CardPullDown>
             <div>
                 <h6>{project.title}</h6>
                 <p>{project.description}</p>
             </div>
-            <FontAwesomeIcon icon={project.icon} size={"2x"}/>
+            {project.icon ? <FontAwesomeIcon icon={project.icon} size={"2x"}/> : project.svg}
         </ProjectCard>
     )
 }
 
-const ProjectCard = styled.div<{color: string}>`
+
+const CardPullDown = styled.div`
+    position: relative;
+    width: 280px;
+    left: -30px;
+    top: -40px;
+    padding: 15px;
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        columns: 2;  
+        
+        li {
+            display: flex;
+            flex-wrap: no-wrap;
+            
+            svg {
+                padding-right:1em;
+                padding-left: 1em;
+            }
+        }
+    }
+`;
+
+
+const ProjectCard = styled.div<{ color: string }>`
     width: 280px;
     font-size: 12px;
     border-radius: 5px;
@@ -218,9 +260,29 @@ const ProjectCard = styled.div<{color: string}>`
     p {
         color: hsl(229, 6%, 66%);
     }
-    svg {
+    
+    > svg {
         align-self: flex-end;
         color: ${props => props.color}
+    }
+    
+    ${CardPullDown} {
+         background-color: ${props => props.color};
+         display: none;
+         transition: all .5s ease-in-out;
+    }
+    
+    &:hover {
+        ${CardPullDown} {
+             display: block;
+        }
+        
+        p {
+            height: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
     }
 `;
 
