@@ -23,15 +23,15 @@ const PageHeader: FC = () => {
                     <FontAwesomeIcon icon={emailIconDefinition}/>
                     tonisefton@outlook.com
                 </Info>
-                <Info href="https://github.com/Ariadne-S">
-                    <FontAwesomeIcon icon={githubIconDefinition}/>
-                    https://github.com/Ariadne-S
-                </Info>
                 <Info href="https://www.linkedin.com/in/toni-sefton/">
                     <FontAwesomeIcon icon={linkedInIconDefinition}/>
                     https://www.linkedin.com/in/
                     <wbr/>
                     toni-sefton/
+                </Info>
+                <Info href="https://github.com/Ariadne-S">
+                    <FontAwesomeIcon icon={githubIconDefinition}/>
+                    https://github.com/Ariadne-S
                 </Info>
             </PersonalInfo>
         </PageHeaderContainer>

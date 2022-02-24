@@ -174,9 +174,9 @@ const Timeline: FC = () => {
     return (
         <TimeLineUl>
             <li data-year="2019" data-text="Junior Software Engineer"/>
-            <li data-year=" " data-text=" "/>
+            <li className={"pale"} data-year=" " data-text=" "/>
             <li data-year="2021" data-text="Software Engineer"/>
-            <li data-year=" " data-text=" "/>
+            <li className={"pale"} data-year=" " data-text=" "/>
         </TimeLineUl>
     )
 }
@@ -340,6 +340,10 @@ const TimeLineUl = styled.ul`
    
         &:first-child {
           margin-left: 5px;
+        }
+        
+        &.pale {
+            background: #91a0b7;
         }
     }
 `
