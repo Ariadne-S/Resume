@@ -13,21 +13,23 @@ const Timeline: FC = () => {
 }
 
 const TimeLineUl = styled.ul`
-    width:800px;
-    height: 20px;
+    width:100%;
+    height: 2rem;
     list-style: none;
     text-align: justify;
-    margin: 50px auto;
+    margin: 40px auto;
+    margin-bottom: 60px;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, #31435d 51%, rgba(255,255,255,0) 57%, rgba(255,255,255,0) 100%);
-
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    
     &:after {
         display: inline-block;
         content: "";
-        width: 100%;
     }
     
     li {
-        display: inline-block;
         width: 20px;
         height: 20px;
         background: #31435d;
@@ -35,7 +37,7 @@ const TimeLineUl = styled.ul`
         line-height: 1.2;
         position: relative;
         border-radius: 50%;
-        margin: 0 96px;
+        margin: auto;
 
         &:before {
             display: inline-block;
@@ -44,7 +46,7 @@ const TimeLineUl = styled.ul`
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-             top: -20px;
+            top: -20px;
         }
         
         &:after {
@@ -54,20 +56,19 @@ const TimeLineUl = styled.ul`
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
+            width: 16vw;
             bottom: 0;
-            margin-bottom: -10px;
+            margin-bottom: -5px;
             transform: translate(-50%, 100%);
         }
-   
-        &:first-child {
-          margin-left: 5px;
-        }
+  
         
         &.pale {
             background: #91a0b7;
         }
     }
 `
+
+
 
 export default Timeline;
