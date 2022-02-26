@@ -29,7 +29,8 @@ const Print = styled.div`
     
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 500;
 `
 
 const TimeLineUl = styled.ul`

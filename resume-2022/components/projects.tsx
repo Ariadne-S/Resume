@@ -40,7 +40,6 @@ const ProjectDisplay: FC<{ project: Project }> = ({project}) => {
             </CardPullDown>
             <h6>{project.title}</h6>
             <ProjectDescription>
- 
                 <p>{project.description}</p>
                 <SkillTags tags={project.tags} noHover />
             </ProjectDescription>
@@ -184,13 +183,17 @@ const ProjectCard = styled.div<{ color: string }>`
         flex-direction: row;
         flex-wrap: wrap;
         
+        p, li {
+            color: #4b4e4e;
+        }
+
         h6 {
             flex-grow: 2;
             font-size: 14px;
         }
         
-        svg {
-            color: #4b4e4e;
+        h6, svg {
+            color: #2f2f2f;
         }
         
         > svg {
