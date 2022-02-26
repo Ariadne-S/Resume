@@ -69,8 +69,8 @@ const PageHeaderContainer = styled.div`
     }
     
     @media print {
-       padding: 1rem;
-        border-bottom: 3px solid black;
+       padding: 0;
+        border-bottom: 3px solid #4b4e4e;
         * {
             color: black;
         }

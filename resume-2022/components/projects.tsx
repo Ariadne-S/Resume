@@ -21,6 +21,7 @@ const ProjectGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
     
     @media screen and (max-width: 700px) {
         flex-direction: column;
@@ -69,10 +70,14 @@ const CardPullDown = styled.div`
     top: -40px;
     padding: 15px;
     width: calc(100% + 60px);
-     display: none;
+    display: none;
     
     li, svg {
         color: white !important;
+    }
+    
+    @media print {
+        display: none;
     }
 `;
 
@@ -86,7 +91,11 @@ const SkillTagList = styled.ul<{ noHover: boolean }>`
     list-style-type: none;
     margin: 0;
     padding: 0;
-    columns: 2;  
+    columns: 2; 
+    
+    @media print {
+        columns: 3; 
+    } 
     
     ${props => props.noHover ? noHoverEffect : ''};
 
@@ -103,7 +112,7 @@ const SkillTagList = styled.ul<{ noHover: boolean }>`
 `;
 
 const ProjectCard = styled.div<{ color: string }>`
-    width: 28%;
+    flex: 1 0px;
     font-size: 12px;
     border-radius: 5px;
     padding: 30px;
@@ -136,7 +145,7 @@ const ProjectCard = styled.div<{ color: string }>`
         color: ${props => props.color};
     }
     
-    @media (any-hover: hover) {
+    @media screen and (any-hover: hover) {
         ${CardPullDown} {
              background-color: ${props => props.color};
              transition: all .5s ease-in-out;
@@ -165,15 +174,11 @@ const ProjectCard = styled.div<{ color: string }>`
         box-shadow: 0px 30px 40px -20px hsl(229, 6%, 66%);
         background-color: hsl(0, 0%, 98%);
     }
-
-    @media screen and (max-width: 700px) {
-        width: 95%;
-    }
     
     @media print {
         width: 100%;
         border-top: 0;
-        padding: 15px;
+        padding: 0;
         margin: 0;
         justify-content: flex-start;
         flex-direction: row;
@@ -181,6 +186,7 @@ const ProjectCard = styled.div<{ color: string }>`
         
         h6 {
             flex-grow: 2;
+            font-size: 14px;
         }
         
         svg {
@@ -190,14 +196,9 @@ const ProjectCard = styled.div<{ color: string }>`
         > svg {
             order: -1;
             align-self: flex-start;
-                    margin-top: 0;
-                            margin-bottom: 10px;
-                            margin-right: 15px;
+            margin: 0;
+            margin-right: 15px;
         }
-    }
-    
-    @media screen and (min-width: 700px) and (max-width: 1010px) {
-       width: 44%;
     }
 `;
 
