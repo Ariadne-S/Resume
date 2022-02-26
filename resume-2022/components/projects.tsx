@@ -156,7 +156,7 @@ const ProjectCard = styled.div<{ color: string }>`
     border-radius: 5px;
     border-top: 5px solid ${props => props.color};
     
-    > svg {
+    > svg, .skill-icon {
         position: absolute;
         bottom: 30px;
         right: 30px;
@@ -224,7 +224,7 @@ const ProjectCard = styled.div<{ color: string }>`
             padding: 0;
         }
         
-        > svg {
+        > svg, .skill-icon {
             order: -1;
             position: static;
             align-self: flex-start;
