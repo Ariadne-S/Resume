@@ -29,8 +29,9 @@ h3, h4 {
         padding:0!important;
         margin:0!important;
     }
-    @page {
-        margin: 2cm;
+    @page:left {
+        margin: 1cm 1.5cm;
+
     }
     h3, h4 {
         color: black;

@@ -37,10 +37,18 @@ const EducationContainer = styled.div`
     }
     
     > div {
-        width: 85%;
+        width: 90%;
         
-        h5 {
-            margin-bottom: 15px;
+        @media screen {
+            h5 {
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media print {
+            h5, h6 {
+                margin: 10px 0;
+            }
         }
         
         h6 {

@@ -1,5 +1,14 @@
 import {findIconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {colors, Education, Project} from "./types";
+import styled from "styled-components";
+
+const ColumnList = styled.ul`
+    columns: 2;
+    
+    @media print {
+        columns: 3;
+    }   
+`
 
 const work180projectData: Project[] = [
     {
@@ -99,7 +108,7 @@ const educationData: Education[] = [
         time: '2019', 
         title: 'Data Scientist with Python', 
         subtitle: 'Datacamp | Career Track | 40% complete', 
-        description: <ul>
+        description: <ColumnList>
             <li>Introduction to Python</li>
             <li>Intermediate Python for Data Science</li>
             <li>Python Data Science Toolbox <span>(Part 1)</span></li>
@@ -109,7 +118,7 @@ const educationData: Education[] = [
             <li>Cleaning Data in Python</li>
             <li>pandas Foundations</li>
             <li>Manipulating DataFrames with pandas</li>
-        </ul>
+        </ColumnList>
     },
     {
         time: '2013-2017',
@@ -138,7 +147,6 @@ const educationData: Education[] = [
         </ul>
     }
 ]
-
 
 
 export { work180projectData, educationData }

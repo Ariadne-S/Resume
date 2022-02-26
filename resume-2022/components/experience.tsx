@@ -1,6 +1,7 @@
 import {FC} from "react";
 import Timeline from "./experience-timeline";
 import ProjectsCallout from "./projects";
+import styled from "styled-components";
 
 const Experience: FC = () => {
     return (
@@ -18,7 +19,7 @@ const Experience: FC = () => {
                 load.
             </p>
             <p>Some of the tasks I have undertaken include;</p>
-            <ul>
+            <Ul>
                 <li>Facilitated stand-ups and retros</li>
                 <li>Set up elastic search for the employer search, and added filters to the job search</li>
                 <li>Used hangfire to set up background tasks, such as collecting user actions for ROI reporting</li>
@@ -30,10 +31,18 @@ const Experience: FC = () => {
                 </li>
                 <li>Investigated and resolved performance issues within the backend project</li>
                 <li>Interviewed participants for technical and cultural fits for the engineering and product teams</li>
-            </ul>
+            </Ul>
             <ProjectsCallout/>
         </div>
     )
 }
+
+const Ul = styled.ul`
+    columns: 1;
+    
+    @media print {
+        columns: 2;
+    }   
+`
 
 export default Experience;
