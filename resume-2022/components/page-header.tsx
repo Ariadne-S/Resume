@@ -14,6 +14,12 @@ const githubIconDefinition: IconDefinition = findIconDefinition(githubLookup)
 const linkedInLookup: IconLookup = {prefix: 'fab', iconName: 'linkedin'}
 const linkedInIconDefinition: IconDefinition = findIconDefinition(linkedInLookup)
 
+const MyMail = styled.span`
+   &:after {
+        content: '@outlook.com';
+   }
+`
+
 const PageHeader: FC = () => {
     return (
         <PageHeaderContainer>
@@ -22,9 +28,9 @@ const PageHeader: FC = () => {
                 <h2>Software Engineer</h2>
             </div>
             <PersonalInfo>
-                <Info href="mailto:tonisefton@outlook.com?">
+                <Info>
                     <FontAwesomeIcon icon={emailIconDefinition}/>
-                    tonisefton@outlook.com
+                    <MyMail>tonisefton</MyMail>
                 </Info>
                 <Info href="https://www.linkedin.com/in/toni-sefton/">
                     <FontAwesomeIcon icon={linkedInIconDefinition}/>
@@ -113,7 +119,9 @@ const Info = styled.a`
    }
    
    @media print {
+   &, * {
    color: #4b4e4e;
+   }
     svg {
         color: black;
     }
