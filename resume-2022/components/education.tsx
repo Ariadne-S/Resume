@@ -41,6 +41,17 @@ const EducationContainer = styled.div`
         margin-top: 10px;
     }
     
+    h6 {
+        font-size: 13px;
+        margin-bottom: 10px;
+        font-weight: normal;
+        color: #2d2d2d;
+    }
+    
+    li {
+        font-size: 12px;
+    }
+    
     > div {
         width: 90%;
         

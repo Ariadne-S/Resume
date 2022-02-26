@@ -3,6 +3,7 @@ import {FC} from "react";
 import styled from "styled-components";
 
 import {findIconDefinition, IconDefinition, IconLookup} from '@fortawesome/fontawesome-svg-core'
+import {colors, primaryDarkColor, primaryLightColor} from "../data/types";
 
 const emailLookup: IconLookup = {prefix: 'fas', iconName: 'envelope'}
 const emailIconDefinition: IconDefinition = findIconDefinition(emailLookup)
@@ -60,8 +61,8 @@ const PageHeaderContainer = styled.div`
    }
    
     @media screen {
-        background-color: #31435d;
-        border-bottom: 3px solid #91a0b7;
+        background-color: ${primaryDarkColor};
+        border-bottom: 3px solid ${primaryLightColor};
         
         * {
             color: #ffffffed;

@@ -5,16 +5,23 @@ interface Project {
     svg?: JSX.Element,
     title: string,
     description: JSX.Element,
-    color: string,
     tags: string[]
 }
 
-const colors = {
-    red: "hsl(0, 78%, 62%)",
-    cyan: "hsl(180, 62%, 55%)",
-    orange: "hsl(34, 97%, 64%)",
-    blue: "hsl(212, 86%, 64%)",
-}
+const colors = [
+    '#F94144',
+    '#F3722C',
+    '#F8961E',
+    '#F9C74F',
+    '#90BE6D',
+    '#43AA8B',
+    '#577590'
+]
+
+const primaryLightColor = 'hsl(208, 25%, 45%)';
+const primaryDarkColor = 'hsl(208, 25%, 30%)';
+
+type colorKey = keyof typeof colors
 
 interface Education {
     time: string,
@@ -23,5 +30,5 @@ interface Education {
     description: JSX.Element,
 }
 
-export type { Project, Education };
-export { colors }
+export type { Project, Education, colorKey };
+export { colors, primaryLightColor, primaryDarkColor }

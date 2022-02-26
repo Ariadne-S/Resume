@@ -1,5 +1,6 @@
 import {FC} from "react";
 import styled from "styled-components";
+import {primaryDarkColor, primaryLightColor} from "../data/types";
 
 const Timeline: FC = () => {
     return (
@@ -44,7 +45,7 @@ const TimeLineUl = styled.ul`
     text-align: justify;
     margin: 40px auto;
     margin-bottom: 60px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, #31435d 51%, rgba(255,255,255,0) 57%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 45%, ${primaryDarkColor} 51%, rgba(255,255,255,0) 57%, rgba(255,255,255,0) 100%);
     display: flex;
     justify-content: space-between;
     padding-left: 0;
@@ -57,7 +58,7 @@ const TimeLineUl = styled.ul`
     li {
         width: 20px;
         height: 20px;
-        background: #31435d;
+        background: ${primaryDarkColor};
         text-align: center;
         line-height: 1.2;
         position: relative;
@@ -89,7 +90,7 @@ const TimeLineUl = styled.ul`
   
         
         &.pale {
-            background: #91a0b7;
+            background: ${primaryLightColor};
         }
     }
     

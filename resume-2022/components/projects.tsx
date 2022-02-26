@@ -1,16 +1,28 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import {work180projectData} from "../data/data";
 import styled, {css} from "styled-components";
-import {Project} from "../data/types";
+import {colorKey, colors, Project} from "../data/types";
 import {findIconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
+/* Randomize array in-place using Durstenfeld shuffle algorithm */
+function shuffleArray(array: any[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
 const ProjectsCallout: FC = () => {
+    shuffleArray(colors)
     return (
         <div>
             <h5>Projects</h5>
             <ProjectGrid>
-                {work180projectData.map(project => <ProjectDisplay key={project.title} project={project}/>)}
+                {work180projectData.map((project, index) => {
+                    return <ProjectDisplay key={project.title} project={project} color={colors[(index % colors.length)]} />})}
             </ProjectGrid>
         </div>
 
@@ -32,9 +44,9 @@ const ProjectGrid = styled.div`
     }
 `
 
-const ProjectDisplay: FC<{ project: Project }> = ({project}) => {
+const ProjectDisplay: FC<{ project: Project, color: string}> = ({project, color}) => {
     return (
-        <ProjectCard color={project.color}>
+        <ProjectCard color={color}>
             <CardPullDown>
                 <SkillTags tags={project.tags}/>
             </CardPullDown>
@@ -81,8 +93,12 @@ const CardPullDown = styled.div`
 `;
 
 const noHoverEffect = css`
-    @media (screen and any-hover: hover) {
+    @media (any-hover: hover) {
         display: none;
+    }
+    
+    @media print {
+        display: block;
     }
 `
 
@@ -112,6 +128,7 @@ const SkillTagList = styled.ul<{ noHover: boolean }>`
 
 const ProjectCard = styled.div<{ color: string }>`
     flex: 1 0px;
+    min-width: 250px;
     font-size: 12px;
     border-radius: 5px;
     padding: 30px;
@@ -125,9 +142,7 @@ const ProjectCard = styled.div<{ color: string }>`
     
     h6 {
         line-height: 0.8;
-        margin-bottom: 50px;
-        margin-top: 100px;
-        margin: 0 auto;
+        margin: 0;
         line-height: 1.5;
         color: hsl(234, 12%, 34%);
         font-weight: 600;
