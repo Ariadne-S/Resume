@@ -16,8 +16,10 @@ const linkedInIconDefinition: IconDefinition = findIconDefinition(linkedInLookup
 const PageHeader: FC = () => {
     return (
         <PageHeaderContainer>
-            <h1>Toni Sefton</h1>
-            <h2>Software Engineer</h2>
+            <div>
+                <h1>Toni Sefton</h1>
+                <h2>Software Engineer</h2>
+            </div>
             <PersonalInfo>
                 <Info href="mailto:tonisefton@outlook.com?">
                     <FontAwesomeIcon icon={emailIconDefinition}/>
@@ -41,10 +43,11 @@ const PageHeader: FC = () => {
 const PageHeaderContainer = styled.div`
     display: flex;
     width: 100vw;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 3px solid #91a0b7;
-    padding: 2rem;
+    padding: 3rem;
     background-color: #31435d;
     margin-top: 0;
     
@@ -55,20 +58,49 @@ const PageHeaderContainer = styled.div`
     h1 {
         margin-bottom: 0px;
     }
+    
+   @media screen and (max-width: 700px) {
+        flex-direction: column;
+   }
+    
+   @media screen and (max-width: 700px) {
+        text-align: center;
+   }
 `;
 
 const PersonalInfo = styled.div`
     display: flex;
-    width: 100vw;
-    flex-direction: row;
+    width: 50vw;
+    flex-direction: column;
     justify-content: space-evenly;
-    margin-top: 20px;
+    
+    @media screen and (max-width: 700px) {
+        margin-top: 20px;
+    }
 `;
 
 const Info = styled.a`
+    text-align: right;
+    margin-bottom: 10px;
+    
     svg {
         margin-right: 10px;
     };
+    
+    @media screen and (max-width: 700px) {
+        text-align: center;
+    }
+    
+   @media screen and (max-width: 450px) {
+        display: flex;
+        margin-top: 10px;
+        flex-direction: column;
+        
+        svg {
+            margin: auto;
+            margin-bottom: 5px;
+        };
+   }
 `;
 
 export default PageHeader

@@ -16,6 +16,9 @@ a {
 }
 
 h3 {
-    color: #31435d;
     font-size: 25px;
+}
+
+h3, h4 {
+    color: #31435d;
 }
