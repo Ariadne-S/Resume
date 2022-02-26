@@ -120,8 +120,9 @@ const Info = styled.a`
    
    @media print {
    &, * {
-   color: #4b4e4e;
+    color: #4b4e4e;
    }
+   
     svg {
         color: black;
     }
