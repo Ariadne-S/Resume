@@ -82,6 +82,7 @@ const CardPullDown = styled.div`
     padding: 15px;
     width: calc(100% + 60px);
     display: none;
+    height: 0;
     
     li, svg {
         color: white !important;
@@ -160,12 +161,13 @@ const ProjectCard = styled.div<{ color: string }>`
     }
     
     @media screen and (any-hover: hover) {
+        height: 300px;
+        justify-content: space-between;
+        
         ${CardPullDown} {
              background-color: ${props => props.color};
-             transition: all .5s ease-in-out;
+             transition: all .10s ease-in-out;
         }
-    
-        justify-content: space-between;
         
         ${CardPullDown} {
              display: none;
@@ -173,11 +175,12 @@ const ProjectCard = styled.div<{ color: string }>`
     
         &:hover {
             ${CardPullDown} {
+                 height: auto;
                  display: block;
             }
             
             p {
-                height: 80px;
+                height: 38px;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
