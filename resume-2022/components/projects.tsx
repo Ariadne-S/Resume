@@ -33,7 +33,7 @@ const ProjectGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 40px;
     
     @media screen and (max-width: 700px) {
         flex-direction: column;
@@ -41,6 +41,7 @@ const ProjectGrid = styled.div`
     
     @media print {
         flex-direction: column;
+        gap: 20px;
     }
 `
 
@@ -50,11 +51,13 @@ const ProjectDisplay: FC<{ project: Project, color: string}> = ({project, color}
             <CardPullDown>
                 <SkillTags tags={project.tags}/>
             </CardPullDown>
-            <h6>{project.title}</h6>
-            <ProjectDescription>
-                <p>{project.description}</p>
-                <SkillTags tags={project.tags} noHover />
-            </ProjectDescription>
+            <InnerCard>
+                <h6>{project.title}</h6>
+                <ProjectDescription>
+                    <p>{project.description}</p>
+                    <SkillTags tags={project.tags} noHover />
+                </ProjectDescription>
+            </InnerCard>
             {project.icon ? <FontAwesomeIcon icon={project.icon} size={"2x"}/> : project.svg}
         </ProjectCard>
     )
@@ -76,13 +79,8 @@ const SkillTags: FC<{ tags: string[], noHover?: boolean}> = ({tags, noHover = fa
 }
 
 const CardPullDown = styled.div`
-    position: relative;
-    left: -30px;
-    top: -40px;
-    padding: 15px;
-    width: calc(100% + 60px);
-    display: none;
     height: 0;
+    overflow: hidden;
     
     li, svg {
         color: white !important;
@@ -127,22 +125,16 @@ const SkillTagList = styled.ul<{ noHover: boolean }>`
     }
 `;
 
-const ProjectCard = styled.div<{ color: string }>`
-    flex: 1 0px;
-    min-width: 250px;
-    font-size: 12px;
-    border-radius: 5px;
-    padding: 30px;
-    padding-top: 40px;
-    margin: 20px 0;  
+
+const InnerCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    border-top: 5px solid ${props => props.color};
-    
+    padding: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+ 
     h6 {
-        line-height: 0.8;
         margin: 0;
         line-height: 1.5;
         color: hsl(234, 12%, 34%);
@@ -153,8 +145,21 @@ const ProjectCard = styled.div<{ color: string }>`
     p, li {
         color: hsl(229, 6%, 66%);
     }
+`
+
+
+const ProjectCard = styled.div<{ color: string }>`
+    flex: 1 0px;
+    position: relative;
+    min-width: 250px;
+    font-size: 12px;
+    border-radius: 5px;
+    border-top: 5px solid ${props => props.color};
     
     > svg {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
         margin-top: 10px;
         align-self: flex-end;
         color: ${props => props.color};
@@ -167,20 +172,21 @@ const ProjectCard = styled.div<{ color: string }>`
         ${CardPullDown} {
              background-color: ${props => props.color};
              transition: all .10s ease-in-out;
-        }
-        
-        ${CardPullDown} {
-             display: none;
+             padding: 0 15px;
         }
     
         &:hover {
+            ${InnerCard} {
+                padding-top: 10px;
+            }
+        
             ${CardPullDown} {
                  height: auto;
-                 display: block;
+                 padding: 15px;
+                 -display: block;
             }
             
             p {
-                height: 38px;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
@@ -197,9 +203,9 @@ const ProjectCard = styled.div<{ color: string }>`
         border-top: 0;
         padding: 0;
         margin: 0;
+        display: flex;
         justify-content: flex-start;
         flex-direction: row;
-        flex-wrap: wrap;
         
         p, li {
             color: #4b4e4e;
@@ -214,8 +220,13 @@ const ProjectCard = styled.div<{ color: string }>`
             color: #2f2f2f;
         }
         
+        ${InnerCard} {
+            padding: 0;
+        }
+        
         > svg {
             order: -1;
+            position: static;
             align-self: flex-start;
             margin: 0;
             margin-right: 15px;
