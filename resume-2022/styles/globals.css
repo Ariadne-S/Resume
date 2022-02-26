@@ -22,3 +22,13 @@ h3 {
 h3, h4 {
     color: #31435d;
 }
+
+@media print {
+    h3, h4 {
+        color: black;
+    }
+    
+    p, li {
+        font-size: 12px;
+    }
+}

@@ -67,6 +67,10 @@ const TimeLineUl = styled.ul`
             background: #91a0b7;
         }
     }
+    
+    @media print {
+        display: none;
+    }
 `
 
 

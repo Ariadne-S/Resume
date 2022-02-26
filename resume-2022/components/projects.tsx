@@ -25,6 +25,10 @@ const ProjectGrid = styled.div`
     @media screen and (max-width: 700px) {
         flex-direction: column;
     }
+    
+    @media print {
+        flex-direction: column;
+    }
 `
 
 const ProjectDisplay: FC<{ project: Project }> = ({project}) => {
@@ -33,11 +37,12 @@ const ProjectDisplay: FC<{ project: Project }> = ({project}) => {
             <CardPullDown>
                 <SkillTags tags={project.tags}/>
             </CardPullDown>
-            <div>
-                <h6>{project.title}</h6>
+            <h6>{project.title}</h6>
+            <ProjectDescription>
+ 
                 <p>{project.description}</p>
                 <SkillTags tags={project.tags} noHover />
-            </div>
+            </ProjectDescription>
             {project.icon ? <FontAwesomeIcon icon={project.icon} size={"2x"}/> : project.svg}
         </ProjectCard>
     )
@@ -64,18 +69,15 @@ const CardPullDown = styled.div`
     top: -40px;
     padding: 15px;
     width: calc(100% + 60px);
+     display: none;
     
     li, svg {
         color: white !important;
     }
-    
-    @media (any-hover: none) {
-        display: none;
-    }
 `;
 
 const noHoverEffect = css`
-    @media (any-hover: hover) {
+    @media (screen and any-hover: hover) {
         display: none;
     }
 `
@@ -104,7 +106,6 @@ const ProjectCard = styled.div<{ color: string }>`
     width: 28%;
     font-size: 12px;
     border-radius: 5px;
-    box-shadow: 0px 30px 40px -20px hsl(229, 6%, 66%);
     padding: 30px;
     padding-top: 40px;
     margin: 20px 0;  
@@ -113,7 +114,6 @@ const ProjectCard = styled.div<{ color: string }>`
     justify-content: space-between;
 
     border-top: 5px solid ${props => props.color};
-    background-color: hsl(0, 0%, 98%);
     
     h6 {
         line-height: 0.8;
@@ -133,7 +133,7 @@ const ProjectCard = styled.div<{ color: string }>`
     > svg {
         margin-top: 10px;
         align-self: flex-end;
-        color: ${props => props.color}
+        color: ${props => props.color};
     }
     
     @media (any-hover: hover) {
@@ -143,6 +143,7 @@ const ProjectCard = styled.div<{ color: string }>`
         }
     
         justify-content: space-between;
+        
         ${CardPullDown} {
              display: none;
         }
@@ -160,14 +161,48 @@ const ProjectCard = styled.div<{ color: string }>`
         }
     }
 
+    @media screen {
+        box-shadow: 0px 30px 40px -20px hsl(229, 6%, 66%);
+        background-color: hsl(0, 0%, 98%);
+    }
+
     @media screen and (max-width: 700px) {
         width: 95%;
     }
     
+    @media print {
+        width: 100%;
+        border-top: 0;
+        padding: 15px;
+        margin: 0;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
         
+        h6 {
+            flex-grow: 2;
+        }
+        
+        svg {
+            color: #4b4e4e;
+        }
+        
+        > svg {
+            order: -1;
+            align-self: flex-start;
+                    margin-top: 0;
+                            margin-bottom: 10px;
+                            margin-right: 15px;
+        }
+    }
+    
     @media screen and (min-width: 700px) and (max-width: 1010px) {
        width: 44%;
     }
 `;
+
+const ProjectDescription = styled.div`
+     flex: 1 100%;
+`
 
 export default ProjectsCallout;

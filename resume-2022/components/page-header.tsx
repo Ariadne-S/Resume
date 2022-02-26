@@ -46,14 +46,9 @@ const PageHeaderContainer = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 3px solid #91a0b7;
     padding: 3rem;
-    background-color: #31435d;
+
     margin-top: 0;
-    
-    * {
-        color: #ffffffed;
-    }
     
     h1 {
         margin-bottom: 0px;
@@ -61,11 +56,25 @@ const PageHeaderContainer = styled.div`
     
    @media screen and (max-width: 700px) {
         flex-direction: column;
-   }
-    
-   @media screen and (max-width: 700px) {
         text-align: center;
    }
+   
+    @media screen {
+        background-color: #31435d;
+        border-bottom: 3px solid #91a0b7;
+        
+        * {
+            color: #ffffffed;
+        }
+    }
+    
+    @media print {
+       padding: 1rem;
+        border-bottom: 3px solid black;
+        * {
+            color: black;
+        }
+    }
 `;
 
 const PersonalInfo = styled.div`
@@ -100,6 +109,13 @@ const Info = styled.a`
             margin: auto;
             margin-bottom: 5px;
         };
+   }
+   
+   @media print {
+   color: #4b4e4e;
+    svg {
+        color: black;
+    }
    }
 `;
 
