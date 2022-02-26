@@ -28,8 +28,6 @@ const Print = styled.div`
         display: none;
     }
     
-    display: flex;
-    justify-content: space-between;
     font-size: 14px;
     font-weight: 500;
 `
