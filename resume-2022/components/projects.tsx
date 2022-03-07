@@ -58,7 +58,9 @@ const ProjectDisplay: FC<{ project: Project, color: string}> = ({project, color}
                     <SkillTags tags={project.tags} noHover />
                 </ProjectDescription>
             </InnerCard>
-            {project.icon ? <FontAwesomeIcon icon={project.icon} size={"2x"}/> : project.svg}
+            <IconBar>
+                {project.icon ? <FontAwesomeIcon icon={project.icon} size={"2x"}/> : project.svg}
+            </IconBar>
         </ProjectCard>
     )
 }
@@ -77,6 +79,11 @@ const SkillTags: FC<{ tags: string[], noHover?: boolean}> = ({tags, noHover = fa
         </SkillTagList>
     )
 }
+
+const IconBar = styled.div`
+    display: flex;
+    background-color: hsl(0,0%,98%);;
+`;
 
 const CardPullDown = styled.div`
     height: 0;
@@ -156,13 +163,21 @@ const ProjectCard = styled.div<{ color: string }>`
     border-radius: 5px;
     border-top: 5px solid ${props => props.color};
     
-    > svg, .skill-icon {
+    ${IconBar} {
         position: absolute;
-        bottom: 30px;
-        right: 30px;
+        bottom: 0;
+        right: -0;
         margin-top: 10px;
-        align-self: flex-end;
-        color: ${props => props.color};
+        padding: 30px;
+                padding-top: 10px;
+
+        justify-content: flex-end;
+        width: calc(100% - 30px);
+        
+        > svg, .skill-icon {
+            align-self: flex-end;
+            color: ${props => props.color};
+        }
     }
     
     @media screen and (any-hover: hover) {
@@ -222,14 +237,20 @@ const ProjectCard = styled.div<{ color: string }>`
         
         ${InnerCard} {
             padding: 0;
+            width: 100%;
         }
         
-        > svg, .skill-icon {
+        ${IconBar} {
+            width: auto;
             order: -1;
             position: static;
             align-self: flex-start;
             margin: 0;
             margin-right: 15px;
+            padding: 0;
+             * {
+             color: #2f2f2f;
+             }
         }
     }
 `;
